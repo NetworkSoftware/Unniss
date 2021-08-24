@@ -11,9 +11,9 @@
 
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:background="@drawable/fresh_icon"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/unniss"
         android:foregroundGravity="center">
 
     </ImageView>

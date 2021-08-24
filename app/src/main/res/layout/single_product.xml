@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/product_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_margin="10dp"
         android:elevation="3dp"
         app:cardCornerRadius="10dp">
@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/fresh_icon" />
+                    android:src="@drawable/unniss" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -92,7 +92,8 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/sans"
                     android:gravity="center"
-                    android:maxLines="3"
+                    android:maxLines="2"
+                    android:minLines="2"
                     android:text="New product 1"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
@@ -104,7 +105,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/sans"
                     android:gravity="center"
-                    android:maxLines="5"
+                    android:maxLines="2"
                     android:text="New product 1"
                     android:textColor="@color/colorTex"
                     android:textSize="15dp" />
@@ -117,6 +118,7 @@
                     android:fontFamily="@font/sans"
                     android:gravity="center"
                     android:text="Rs.120.00"
+                    android:maxLines="2"
                     android:textColor="@color/colorTex"
                     android:textSize="16dp" />
 

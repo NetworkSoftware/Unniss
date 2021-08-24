@@ -38,7 +38,7 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/vector"
-                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_color="#00BCD4"
                     app:civ_border_width="1dp" />
 
                 <com.google.android.material.button.MaterialButton

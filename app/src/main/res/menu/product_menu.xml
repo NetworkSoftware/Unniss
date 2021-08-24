@@ -6,12 +6,13 @@
         android:id="@+id/cart"
         android:icon="@drawable/ic_outline_shopping_cart_24"
         android:title="Cart"
+        android:iconTint="@color/black"
         app:actionLayout="@layout/custom_action_item_layout"
         app:showAsAction="always" />
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24"
-        android:iconTint="@color/white"
+        android:iconTint="@color/black"
         android:title="Search"
         android:visible="true"
         app:actionViewClass="androidx.appcompat.widget.SearchView"

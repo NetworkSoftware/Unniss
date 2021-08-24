@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.customer.kadai.frontActivity">
 
+
     <item
         android:id="@+id/cart"
         android:icon="@drawable/ic_outline_shopping_bag_24"
@@ -16,13 +17,21 @@
         android:icon="@drawable/ic_outline_shopping_bag_24"
         android:title="Order"
         android:visible="true"
-        android:iconTint="@color/white"
+        android:iconTint="@color/black"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/wallet"
+        android:icon="@drawable/ic_outline_account_balance_wallet_24"
+        android:title="Order"
+        android:visible="false"
+        android:iconTint="@color/black"
         app:showAsAction="always"/>
     <item
         android:id="@+id/settings"
         android:title="Settings"
         android:visible="true"
-        android:iconTint="@color/white"
+        android:iconTint="@color/black"
         android:icon="@drawable/ic_outline_settings_24"
         app:showAsAction="always" />
 
