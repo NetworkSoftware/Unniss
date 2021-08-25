@@ -42,9 +42,9 @@ public class  AppConfig {
 
 
     //Unniss Mobiles_NetworkSoftware
-  //  public static final String ip = "http://thestockbazaar.com/admin/e-commerce/freshcatch";
+    public static final String ip = "http://thestockbazaar.com/prisma/unniss";
 
-    public static final String ip = "http://192.168.1.100:8113/prisma/unniss";
+    //public static final String ip = "http://192.168.1.101:8113/prisma/unniss";
 
     public static final String configKey = "configKey";
     public static final String usernameKey = "usernameKey";

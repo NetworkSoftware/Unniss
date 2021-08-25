@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -157,7 +158,8 @@ public class HomeActivity extends BaseActivity implements ProductItemClick,OnRan
 
     private void showCategories() {
         GravitySnapRecyclerView categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
-        final GridLayoutManager addManager1 = new GridLayoutManager(getApplication(), 3);
+        LinearLayoutManager addManager1 = new LinearLayoutManager(getApplication(),
+                LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(addManager1);
         categoryRecyclerView.setHasFixedSize(true);
         randomAdapter = new RandomAdapter(getApplication(), chipBean, (OnRandom) this, "");
@@ -243,14 +245,15 @@ public class HomeActivity extends BaseActivity implements ProductItemClick,OnRan
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             ProductListBean productListBean = new ProductListBean();
                             productListBean.setId(jsonObject.getString("id"));
-                            productListBean.setBrand(jsonObject.getString("brand"));
+                            productListBean.setBrand(jsonObject.getString("subcategory"));
+                            productListBean.setCategory(jsonObject.getString("category"));
                             productListBean.setPrice(jsonObject.getString("price"));
-                            productListBean.setRam(jsonObject.getString("ram"));
-                            productListBean.setRom(jsonObject.getString("rom"));
-                            productListBean.setModel(jsonObject.getString("model"));
+                            productListBean.setModel(jsonObject.getString("name"));
                             productListBean.setImage(jsonObject.getString("image"));
                             productListBean.setDescription(jsonObject.getString("description"));
-                            productListBean.setStock_update(jsonObject.getString("stock_update"));
+                            productListBean.setRqtyType(jsonObject.getString("rqtyType"));
+                            productListBean.setRqty(jsonObject.getString("rqty"));
+                            productListBean.setStock_update(jsonObject.getString("stock_status"));
                             productList.add(productListBean);
                         }
 
@@ -456,14 +459,15 @@ public class HomeActivity extends BaseActivity implements ProductItemClick,OnRan
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             ProductListBean productListBean = new ProductListBean();
                             productListBean.setId(jsonObject.getString("id"));
-                            productListBean.setBrand(jsonObject.getString("brand"));
+                            productListBean.setBrand(jsonObject.getString("subcategory"));
+                            productListBean.setCategory(jsonObject.getString("category"));
                             productListBean.setPrice(jsonObject.getString("price"));
-                            productListBean.setRam(jsonObject.getString("ram"));
-                            productListBean.setRom(jsonObject.getString("rom"));
-                            productListBean.setModel(jsonObject.getString("model"));
+                            productListBean.setModel(jsonObject.getString("name"));
                             productListBean.setImage(jsonObject.getString("image"));
                             productListBean.setDescription(jsonObject.getString("description"));
-                            productListBean.setStock_update(jsonObject.getString("stock_update"));
+                            productListBean.setRqtyType(jsonObject.getString("rqtyType"));
+                            productListBean.setRqty(jsonObject.getString("rqty"));
+                            productListBean.setStock_update(jsonObject.getString("stock_status"));
                             productList.add(productListBean);
                         }
                     } else {
