@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.instamojo.android.Instamojo;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,6 +33,8 @@ public class AppController extends Application {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Instamojo.initialize(this);
 
         mInstance = this;
         init();

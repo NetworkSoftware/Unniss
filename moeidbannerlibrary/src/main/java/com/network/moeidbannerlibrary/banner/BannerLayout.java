@@ -84,6 +84,7 @@ public class BannerLayout extends FrameLayout {
 
     protected void initView(Context context, AttributeSet attrs) {
 
+
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BannerLayout);
         showIndicator = a.getBoolean(R.styleable.BannerLayout_showIndicator, true);
         autoPlayDuration = a.getInt(R.styleable.BannerLayout_interval, 4000);

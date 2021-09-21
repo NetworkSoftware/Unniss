@@ -3,18 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
-    <androidx.cardview.widget.CardView
+
+    <LinearLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="40dp">
-        <include
-            layout="@layout/app_bar_main"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:elevation="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/app_bar_main"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_height="wrap_content" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/small_border">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/searchhome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Search your products"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:gravity="left|center"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="#4C4C4C" />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_baseline_search_24"
+                            android:layout_marginRight="10dp"
+                            app:tint="#4C4C4C" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -22,93 +78,347 @@
         android:layout_height="match_parent">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <pro.network.unniss.app.ProportionalImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/welcome"/>
+
+
+            <LinearLayout
+                android:layout_height="100dp"
+                android:layout_width="363dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:background="@drawable/bottom_radius"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/addview"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="5dp"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_outline_shopping_bag_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="30Lakh+" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="#E8E6E7" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_outline_shopping_cart_24"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="Credit Upto" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="#E8E6E7" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_outline_account_balance_wallet_24"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:text="Products from" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
                 android:orientation="vertical">
 
-                <com.network.moeidbannerlibrary.banner.BannerLayout
-                    android:id="@+id/Banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    app:autoPlaying="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    app:centerScale="1.1"
-                    app:itemSpace="50"
-                    app:moveSpeed="0.5"
-                    app:showIndicator="true" />
-
-                <LinearLayout
-                    android:id="@+id/category"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:orientation="vertical">
+                    android:text="Categories"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"
+                    android:visibility="gone"
+                    android:fontFamily="@font/sans_bold"
+                    android:layout_marginLeft="10dp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:text="Categories"/>
 
-                    <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
-                        android:id="@+id/categoryRecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="3dp"
-                        app:snapGravity="start" />
-
-                    <ProgressBar
-                        android:id="@+id/categoryProgress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:layout_margin="10dp"
-                        android:text="Recent Products"/>
-                    <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
-                        android:id="@+id/product_getAll"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="3dp"
-                        app:snapGravity="start" />
-                </LinearLayout>
-                <androidx.cardview.widget.CardView
+                <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                    android:id="@+id/categoryRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_alignParentBottom="true"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="0dp">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    app:snapGravity="start" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_vertical"
-                        android:background="@drawable/bg_gradient_card"
-                        android:gravity="center"
-                        android:text="© 2021 Unniss. All Rights Reserved."
-                        android:textColor="@color/black"
-                        android:textSize="10dp" />
-
-                </androidx.cardview.widget.CardView>
+                <ProgressBar
+                    android:id="@+id/categoryProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
+            <com.network.moeidbannerlibrary.banner.BannerLayout
+                android:id="@+id/Banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                app:autoPlaying="true"
+                app:centerScale="1.1"
+                app:itemSpace="50"
+                app:moveSpeed="0.5"
+                app:showIndicator="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2F787474"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MENSWEAR"
+                        android:letterSpacing="0.5"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/sans_bold"/>
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+                <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                    android:id="@+id/product_getAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    app:snapGravity="start" />
+
+                <ProgressBar
+                    android:id="@+id/productProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0D34C304"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="WOMENSSWEAR"
+                        android:letterSpacing="0.5"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/sans_bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ETHNICWARE | WESTERNWEAR"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="10dp"
+                        android:gravity="center"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/sans_bold"/>
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+                <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                    android:id="@+id/product_getAll_womens"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    app:snapGravity="start" />
+
+                <ProgressBar
+                    android:id="@+id/mensproductProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0D34C304"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="KIDSSWEAR"
+                        android:letterSpacing="0.5"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/sans_bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="GIRLS | BOYS | BABYCLOTHING"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="10dp"
+                        android:gravity="center"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/white"
+                        android:fontFamily="@font/sans_bold"/>
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+                <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                    android:id="@+id/product_getAll_kids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    app:snapGravity="start" />
+
+                <ProgressBar
+                    android:id="@+id/kidsproductProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <ir.beigirad.zigzagview.ZigzagView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                app:zigzagBackgroundColor="#1A800000"
+                app:zigzagHeight="10dp"
+                app:zigzagSides="top">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="© 2021 Unniss. All Rights Reserved."
+                    android:textColor="@color/black"
+                    android:textSize="10dp" />
+
+            </ir.beigirad.zigzagview.ZigzagView>
+
+        </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>

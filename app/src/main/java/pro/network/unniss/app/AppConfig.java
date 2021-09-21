@@ -10,6 +10,8 @@ import android.os.Environment;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -34,7 +36,6 @@ public class  AppConfig {
 
     public static DecimalFormat decimalFormat = new DecimalFormat("0");
     public static final String isLogin = "isLoginKey";
-    public static final String userId = "userId";
     public static final String address = "address";
     public static final String phone = "phone";
 
@@ -42,9 +43,11 @@ public class  AppConfig {
 
 
     //Unniss Mobiles_NetworkSoftware
+   //
+    //
     public static final String ip = "http://thestockbazaar.com/prisma/unniss";
 
-    //public static final String ip = "http://192.168.1.101:8113/prisma/unniss";
+  // public static final String ip = "http://192.168.1.103:8113/prisma/unniss";
 
     public static final String configKey = "configKey";
     public static final String usernameKey = "usernameKey";
@@ -57,7 +60,7 @@ public class  AppConfig {
     public static final String LOGIN_USER = ip + "/user_login";
     public static final String CHANGE_PASSWORD = ip + "/change_password";
     public static final String CATEGORIES_GET_ALL = ip + "/get_all_category";
-
+    public static final String PRODUCT_SIZE = ip + "/get_all_variations";
     //Mail
     public static final String UPDATE_EMAIL = ip + "/update_email";
 
@@ -69,7 +72,9 @@ public class  AppConfig {
     //Wallet
     public static final String WALLET_GET_ALL = ip + "/get_all_wallet";
     public static final String GET_USER_WALLET = ip + "/get_user_wallet";
-
+    //Coupon
+    public static final String COUPON_GET_ALL = ip + "/get_all_coupon";
+    public static final String GET_COUPON = ip + "/getcoupon";
 
     //Order
     public static final String ORDER_GET_ALL = ip + "/dataFetchAll_order";
@@ -182,9 +187,9 @@ public class  AppConfig {
     }
 
     public static String getResizedImage(String path, boolean isResized) {
-        if (isResized) {
+      /*  if (isResized) {
             return IMAGE_URL + "small/" + path.substring(path.lastIndexOf("/") + 1);
-        }
+        }*/
         return path;
     }
 
@@ -236,5 +241,10 @@ public class  AppConfig {
     public static String getDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(date);
+    }
+
+    public static void hideSoftKeyboard(View view, Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

@@ -17,6 +17,76 @@
             android:layout_marginRight="10dp"
             android:orientation="vertical">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="center_vertical"
+                    android:text="Coupon"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/viewAllCoupon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:autoLink="all"
+                    android:clickable="true"
+                    android:fontFamily="@font/sans"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="view all coupon"
+                    android:textColor="#03A9F4"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/couponsId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/light_gray"
+                    android:fontFamily="@font/sans"
+                    android:hint="Have Coupons?"
+                    android:inputType="text"
+                    android:textColorHint="#c6c6c6"
+                    android:textSize="17dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/applyCoupon"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:text="Apply"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/colorPrimary" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -298,13 +368,13 @@
                         android:textColor="@color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
-
                 <LinearLayout
                     android:id="@+id/walletLinear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
+                    android:visibility="gone"
                     android:layout_marginRight="5dp"
                     android:orientation="horizontal">
 
@@ -338,11 +408,6 @@
                         android:layout_height="15dp" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/border_rounded_cr" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -350,8 +415,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -376,6 +440,11 @@
                         android:textColor="@color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_rounded_cr" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

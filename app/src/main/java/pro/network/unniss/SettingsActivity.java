@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
@@ -39,7 +41,7 @@ import pro.network.unniss.app.AppConfig;
 import pro.network.unniss.app.AppController;
 import pro.network.unniss.app.BaseActivity;
 import pro.network.unniss.app.DbCart;
-import pro.network.unniss.app.web.WebActivity;
+import pro.network.unniss.web.WebActivity;
 import pro.network.unniss.product.ProductListBean;
 import pro.network.unniss.wallet.WalletActivity;
 
@@ -71,10 +73,10 @@ public class SettingsActivity extends BaseActivity {
         changeEmail = findViewById(R.id.changeEmail);
         db = new DbCart(SettingsActivity.this);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
+        Drawable backArrow = getResources().getDrawable(R.drawable.ic_round_arrow_back_24);
+        backArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(backArrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setTitle("Settings" , getTitleColor());
-
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +89,7 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel: 919841778659"));
+                intent.setData(Uri.parse("tel: 917904274703"));
                 startActivity(intent);
             }
         });
@@ -102,7 +104,7 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel: 919940786660"));
+                intent.setData(Uri.parse("tel: 919994040963"));
                 startActivity(intent);
             }
         });
@@ -111,8 +113,8 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsActivity.this, WebActivity.class);
-                intent.putExtra("url", "www.freshcatch.info");
-                intent.putExtra("name", "freshcatch.info");
+                intent.putExtra("url", "https://unniss.in/#");
+                intent.putExtra("name", "Unniss.in");
                 startActivity(intent);
             }
         });

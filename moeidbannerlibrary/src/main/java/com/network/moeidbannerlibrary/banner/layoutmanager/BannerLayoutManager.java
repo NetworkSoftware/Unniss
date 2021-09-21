@@ -160,10 +160,11 @@ public  class BannerLayoutManager extends RecyclerView.LayoutManager {
         itemView.setScaleX(scale);
         itemView.setScaleY(scale);
     }
-    /**
+     /**
      * @param x start positon of the view you want scale
      * @return the scale rate of current scroll mOffset
      */
+
     private float calculateScale(float x) {
         float deltaX = Math.abs(x - (mOrientationHelper.getTotalSpace() - mDecoratedMeasurement) / 2f);
         float diff = 0f;
@@ -190,6 +191,7 @@ public  class BannerLayoutManager extends RecyclerView.LayoutManager {
     /**
      * @param orientation   Layout orientation. Should be {@link #HORIZONTAL} or {@link #VERTICAL}
      */
+
     public BannerLayoutManager(Context context, int orientation) {
         this(context,orientation,false);
     }
@@ -216,6 +218,7 @@ public  class BannerLayoutManager extends RecyclerView.LayoutManager {
      * @return true if LayoutManager will recycle its children when it is detached from
      * RecyclerView.
      */
+
     public boolean getRecycleChildrenOnDetach() {
         return mRecycleChildrenOnDetach;
     }
@@ -233,6 +236,7 @@ public  class BannerLayoutManager extends RecyclerView.LayoutManager {
      *
      * @param recycleChildrenOnDetach Whether children should be recycled in detach or not.
      */
+
     public void setRecycleChildrenOnDetach(boolean recycleChildrenOnDetach) {
         mRecycleChildrenOnDetach = recycleChildrenOnDetach;
     }

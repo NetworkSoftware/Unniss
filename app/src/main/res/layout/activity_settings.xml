@@ -175,6 +175,7 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/changeEmail"
                         android:layout_width="match_parent"
@@ -232,6 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:baselineAligned="false"
+                        android:visibility="gone"
                         android:foreground="?selectableItemBackground"
                         android:gravity="center_vertical"
                         android:minHeight="?android:attr/listPreferredItemHeight"
@@ -305,7 +307,7 @@
                         android:layout_alignLeft="@android:id/title"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="Ph :          +91 70101 35419\nEMail Id : indirayalu@gmail.com"
+                        android:text="Ph :          +91 70101 35419\nEMail Id :  support@unniss.in"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/black"
                         android:textSize="15dp"
@@ -325,7 +327,6 @@
                         android:textColor="?android:textColorSecondary"
                         android:typeface="sans" />
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -357,7 +358,7 @@
                         android:layout_alignLeft="@android:id/title"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="Ph :          +91 70101 35419\nEMail Id : indirayalu@gmail.com"
+                        android:text="Ph :+91 70101 35419\nEMail Id :  support@unniss.in"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/black"
                         android:textSize="15dp"
@@ -377,6 +378,7 @@
                         android:textColor="?android:textColorSecondary"
                         android:typeface="sans" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/contactus3"
                     android:layout_width="match_parent"
@@ -406,7 +408,7 @@
                         android:layout_alignStart="@android:id/title"
                         android:layout_alignLeft="@android:id/title"
                         android:maxLines="10"
-                        android:text="www.freshcatch.info"
+                        android:text="https://unniss.in/#"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="?android:textColorSecondary"
                         android:typeface="sans" />
@@ -440,7 +442,9 @@
                         android:layout_alignStart="@android:id/title"
                         android:layout_alignLeft="@android:id/title"
                         android:maxLines="10"
-                        android:text="No.32,Kakkan Nagar,1st Main Road,Adambakkam,Chennai - 600 088."
+                        android:text="MAHAMAYEE RESIDENCY\n
+No: 4/104,\n Vandiyur Main Road,
+Melamadai,\n Madurai- 625020"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="?android:textColorSecondary"
                         android:typeface="sans" />

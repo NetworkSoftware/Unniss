@@ -43,7 +43,7 @@
                             android:text="Search"
                             android:textSize="22sp"
                             android:textColor="#000"
-                            android:fontFamily="@font/sans"></TextView>
+                            android:fontFamily="@font/sans"/>
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView

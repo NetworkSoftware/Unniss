@@ -1,7 +1,6 @@
 package pro.network.unniss.orders;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,34 +9,22 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import pro.network.unniss.R;
-import pro.network.unniss.app.AppConfig;
-import pro.network.unniss.product.ProductListBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import pro.network.unniss.R;
+import pro.network.unniss.app.AppConfig;
+import pro.network.unniss.product.ProductListBean;
+
+import static pro.network.unniss.app.AppConfig.decimalFormat;
+
 
 public class MyOrderListSubAdapter extends RecyclerView.Adapter<MyOrderListSubAdapter.MyViewHolder> {
 
-    private Context mainActivityUser;
-    private ArrayList<ProductListBean> myorderBeans;
-    SharedPreferences preferences;
     int selectedPosition = 0;
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-
-        private ImageView product_image;
-        private TextView qty;
-
-
-        public MyViewHolder(View view) {
-            super((view));
-            product_image = (ImageView) view.findViewById(R.id.product_image);
-            qty = (TextView) view.findViewById(R.id.qty);
-
-        }
-    }
+    private final Context mainActivityUser;
+    private ArrayList<ProductListBean> myorderBeans;
 
     public MyOrderListSubAdapter(Context mainActivityUser, ArrayList<ProductListBean> myorderBeans) {
         this.mainActivityUser = mainActivityUser;
@@ -54,28 +41,58 @@ public class MyOrderListSubAdapter extends RecyclerView.Adapter<MyOrderListSubAd
         notifyDataSetChanged();
     }
 
-    public MyOrderListSubAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.myorders_list_sub, parent, false);
 
-        return new MyOrderListSubAdapter.MyViewHolder(itemView);
+        return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ProductListBean myorderBean = myorderBeans.get(position);
 
-        holder.qty.setText(myorderBean.getQty() + " "+myorderBean.getBrand()+" - "+myorderBean.getModel());
-        Picasso.with(mainActivityUser)
-                .load(AppConfig.getResizedImage(myorderBean.getImage(), true))
-                .placeholder(R.drawable.vivo)
-                .error(R.drawable.vivo)
-                .into(holder.product_image);
+        holder.title.setText(myorderBean.getName());
+        if(myorderBean.getImage()!=null&& myorderBean.getImage().length()>0){
+
+            Picasso.with(mainActivityUser)
+                    .load(AppConfig.getResizedImage(myorderBean.getImage(), true))
+                    .placeholder(R.drawable.unniss)
+                    .error(R.drawable.unniss)
+                    .into(holder.product_image);
+        }
+        String qty = myorderBean.qty;
+        try {
+            if (qty == null || !qty.matches("-?\\d+(\\.\\d+)?")) {
+                qty = "1";
+            }
+        } catch (Exception e) {
+
+        }
+        float startValue = Float.parseFloat(myorderBean.getPrice()) * Float.parseFloat(qty);
+        holder.subtitle.setText(myorderBean.getQty() + "*" + myorderBean.getPrice() + "/" +
+                myorderBean.getRqty() + " " + myorderBean.getRqtyType() +
+                "=" + "₹" + decimalFormat.format(startValue) + ""+"\nSize :"+myorderBean.getSize());
 
     }
 
     public int getItemCount() {
         return myorderBeans.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private final TextView title;
+        private final TextView subtitle;
+        private  final ImageView product_image;
+
+
+        public MyViewHolder(View view) {
+            super((view));
+            title = view.findViewById(R.id.title_one);
+            subtitle = view.findViewById(R.id.title_two);
+            product_image = view.findViewById(R.id.product_image);
+
+        }
     }
 
 }

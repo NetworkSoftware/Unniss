@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -52,14 +53,17 @@ public class MyOrderListAdapter extends RecyclerView.Adapter<MyOrderListAdapter.
         holder.createdon.setText(AppConfig.convertTimeToLocal(been.getCreatedon()));
         holder.reason.setText(been.getReson());
         holder.orderid.setText(been.getId());
-        holder.cashback.setVisibility(View.VISIBLE);
-        holder.cashbackTxt.setVisibility(View.VISIBLE);
-        if(been.getWalletAmount().equalsIgnoreCase("")){
+        holder.trackId.setText(been.getTrackId());
+        holder.track_lay.setVisibility(View.VISIBLE);
+        if(been.getTrackId().equalsIgnoreCase("0")){
+            holder.track_lay.setVisibility(View.GONE);
+        }
+     /*   if(been.getWalletAmount().equalsIgnoreCase("")){
             holder.cashback.setVisibility(View.GONE);
             holder.cashbackTxt.setVisibility(View.GONE);
         }else {
             holder.cashback.setText(been.getWalletAmount());
-        }
+        }*/
         holder.cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +79,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter<MyOrderListAdapter.
 
         }
 
-        MyOrderListSubAdapter myOrderListAdapter = new MyOrderListSubAdapter(mainActivityUser, been.getProductBeans());
+        MyOrderListProAdapter myOrderListAdapter = new MyOrderListProAdapter(mainActivityUser, been.getProductBeans());
         final LinearLayoutManager addManager1 = new LinearLayoutManager(mainActivityUser, LinearLayoutManager.HORIZONTAL, false);
         holder.cart_sub_list.setLayoutManager(addManager1);
         holder.cart_sub_list.setAdapter(myOrderListAdapter);
@@ -89,15 +93,16 @@ public class MyOrderListAdapter extends RecyclerView.Adapter<MyOrderListAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView orderid,cashback,cashbackTxt;
+        TextView orderid;
         RecyclerView cart_sub_list;
+        LinearLayout track_lay;
         CardView cart;
         private final TextView name;
         private final TextView quantity;
         private final TextView amount;
         private final TextView status;
         private final TextView createdon;
-        private final TextView reason;
+        private final TextView reason,trackId;
 
         public MyViewHolder(View view) {
             super((view));
@@ -110,8 +115,8 @@ public class MyOrderListAdapter extends RecyclerView.Adapter<MyOrderListAdapter.
             reason = view.findViewById(R.id.reason);
             orderid = view.findViewById(R.id.orderid);
             cart = view.findViewById(R.id.cart);
-            cashback = view.findViewById(R.id.cashback);
-            cashbackTxt = view.findViewById(R.id.cashbackTxt);
+            trackId = view.findViewById(R.id.trackId);
+            track_lay = view.findViewById(R.id.track_lay);
 
 
         }

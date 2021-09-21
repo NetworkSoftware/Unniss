@@ -3,13 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.customer.kadai.frontActivity">
     <item
-        android:id="@+id/cart"
-        android:icon="@drawable/ic_outline_shopping_cart_24"
-        android:title="Cart"
-        android:iconTint="@color/black"
-        app:actionLayout="@layout/custom_action_item_layout"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24"
         android:iconTint="@color/black"
@@ -18,4 +11,19 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/wishlist"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="Favorite"
+        android:iconTint="@color/black"
+        app:actionLayout="@layout/fav_count_layout"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/cart"
+        android:icon="@drawable/ic_outline_shopping_cart_24"
+        android:title="Cart"
+        android:iconTint="@color/black"
+        app:actionLayout="@layout/custom_action_item_layout"
+        app:showAsAction="always" />
 </menu>

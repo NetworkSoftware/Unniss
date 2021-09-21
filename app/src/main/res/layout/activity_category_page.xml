@@ -48,7 +48,7 @@
                 android:gravity="center|left"
                 android:text="Products"
                 android:textColor="@color/orange"
-                android:textSize="20sp"></TextView>
+                android:textSize="20sp"/>
 
 
         </LinearLayout>
@@ -90,6 +90,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="@font/sans"
                 android:gravity="start|center_vertical"
                 android:textColor="#fff"
                 android:textSize="14sp"
@@ -101,6 +102,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center_vertical"
                 android:layout_weight="1"
+                android:fontFamily="@font/sans"
                 android:gravity="start|center_vertical"
                 android:textColor="#fff"
                 android:textSize="14sp"
@@ -111,6 +113,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:fontFamily="@font/sans"
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/ic_left_arrow"
                 android:drawableTint="#fff"
@@ -139,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:fontFamily="@font/sans"
                 android:padding="5dp"
                 android:layout_marginTop="15dp"
                 android:text="Products not found"/>

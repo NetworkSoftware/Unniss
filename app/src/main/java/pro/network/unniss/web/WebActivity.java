@@ -1,4 +1,4 @@
-package pro.network.unniss.app.web;
+package pro.network.unniss.web;
 
 import android.net.http.SslError;
 import android.view.MenuItem;

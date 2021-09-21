@@ -19,17 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
-
                 android:layout_width="55dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
                 android:src="@drawable/unniss"
                 android:visibility="visible" />
 
@@ -37,8 +35,6 @@
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/sans"
                 android:gravity="left|center"
@@ -55,9 +51,21 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginRight="8dp"
                 android:src="@drawable/ic_baseline_search_24"
                 android:text="Search"
-                app:tint="@color/black" />
+                app:tint="#4C4C4C" />
+            <ImageView
+                android:id="@+id/myorder"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="1dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_outline_shopping_bag_24"
+                android:text="Myorders"
+                app:tint="#CC4C4C4C" />
 
 
             <FrameLayout
@@ -65,28 +73,29 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="10dp">
 
                 <ImageView
                     android:id="@+id/cart"
-                    android:layout_width="25dp"
-                    android:layout_height="35dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:gravity="start"
+                    android:layout_marginTop="6dp"
                     android:src="@drawable/ic_outline_shopping_cart_24"
                     android:text="Basket"
-                    app:tint="@color/black" />
+                    app:tint="#CC4C4C4C" />
 
                 <TextView
                     android:id="@+id/basketCount"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:fontFamily="@font/sans"
                     android:layout_gravity="center|left"
-                    android:layout_marginLeft="32dp"
+                    android:layout_marginLeft="23dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/badge"
-                    android:backgroundTint="@color/black"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="10sp"
@@ -97,13 +106,14 @@
 
             <ImageView
                 android:id="@+id/setting"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="3dp"
                 android:layout_gravity="center"
-                android:src="@drawable/outline_settings_white_18dp"
+                android:src="@drawable/setting"
                 android:text="Search"
-                app:tint="@color/black" />
+                app:tint="#CC4C4C4C" />
         </LinearLayout>
 
 

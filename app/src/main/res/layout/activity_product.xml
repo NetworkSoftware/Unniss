@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/vivo" />
+            android:src="@drawable/unniss" />
 
         <LinearLayout
             android:id="@+id/back"

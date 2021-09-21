@@ -46,7 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<pro.network.unniss.chi
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category_item, parent, false);
+                .inflate(R.layout.single_product, parent, false);
         return new MyViewHolder(itemView);
     }
 

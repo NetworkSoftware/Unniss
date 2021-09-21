@@ -2,6 +2,7 @@ package pro.network.unniss.cart;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +29,10 @@ import static pro.network.unniss.app.AppConfig.decimalFormat;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyViewHolder> {
 
+    private final Context mainActivityUser;
     public CartItemClick cartItemClick;
     SharedPreferences preferences;
     int selectedPosition = 0;
-    private final Context mainActivityUser;
     private List<ProductListBean> productBeans;
 
     public CartListAdapter(Context mainActivityUser, List<ProductListBean> productBeans, CartItemClick cartItemClick) {
@@ -61,8 +62,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ProductListBean productBean = productBeans.get(position);
 
-        holder.product_name.setText(productBean.getBrand() + " - " + productBean.getModel());
-
+        holder.product_name.setText((Html.fromHtml(productBean.getBrand())) + " - " + (Html.fromHtml(productBean.getModel())));
+        holder.size.setText(productBean.getSize());
         try {
             ArrayList<String> urls = new Gson().fromJson(productBean.image, (Type) List.class);
             Glide.with(mainActivityUser)
@@ -131,14 +132,14 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout delete;
         private final ImageView product_image;
         private final ImageView minus;
         private final ImageView plus;
         private final TextView product_name;
         private final TextView product_price;
         private final TextView product_total_price;
-        private final TextView quantity;
+        private final TextView quantity, size;
+        LinearLayout delete;
 
         public MyViewHolder(View view) {
             super((view));
@@ -150,6 +151,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             plus = view.findViewById(R.id.plus);
             quantity = view.findViewById(R.id.quantity);
             delete = view.findViewById(R.id.delete);
+            size = view.findViewById(R.id.size);
 
         }
     }

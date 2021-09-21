@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <application
         android:name="pro.network.unniss.app.AppController"
         android:allowBackup="true"
@@ -35,7 +38,7 @@
         </activity>
         <activity
             android:name="pro.network.unniss.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppThemeNowhite"/>
 
 
         <activity
@@ -45,15 +48,23 @@
         <activity
             android:name="pro.network.unniss.cart.CartActivity"
             android:label="Cart"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeImage" />
         <activity
             android:name="pro.network.unniss.AllProductActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppThemeWhite" />
         <activity
             android:name="pro.network.unniss.orders.MyOrderPage"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".wishlist.WishListActivity"
+            android:label="WishList"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="pro.network.unniss.product.ProductActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".coupon.CouponsActivity"
+            android:label="All Coupons"
             android:theme="@style/AppTheme" />
         <activity
             android:name="pro.network.unniss.product.BannerActivity"
@@ -78,7 +89,7 @@
             android:name="pro.network.unniss.orders.SingleOrderPage"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="pro.network.unniss.app.web.WebActivity"
+            android:name=".web.WebActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name="pro.network.unniss.wallet.WalletActivity"

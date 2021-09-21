@@ -13,8 +13,157 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Order Id : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/track_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Tracking Id : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/trackId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Name : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Phone : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Quantity : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,7 +299,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/sans"
                     android:gravity="left"
-                    android:text="Payment : "
+                    android:text="Payment Mode: "
                     android:textSize="15dp" />
 
                 <TextView
@@ -202,6 +351,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -257,7 +407,64 @@
                     android:textColor="@color/black"
                     android:textSize="18dp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Pincode : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/toPincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Created on : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/createdon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sans"
+                    android:gravity="left"
+                    android:text="Rs. 856.85"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/myorders_list"
                 android:layout_width="match_parent"
@@ -279,6 +486,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <TextView
@@ -323,35 +531,6 @@
 
                         <TextView
                             android:id="@+id/shippingTotal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="right"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sans"
-                            android:gravity="left"
-                            android:text="Rs. 50.00"
-                            android:textColor="@color/black"
-                            android:textSize="18dp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/sans"
-                            android:gravity="left"
-                            android:text="Wallet Cost : "
-                            android:textSize="15dp" />
-
-                        <TextView
-                            android:id="@+id/walletTotal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="right"
@@ -433,51 +612,28 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/shopMore"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/sans_bold"
-            android:gravity="center"
-            android:text="Shop More"
-            android:textColor="@color/colorPrimary"
-            android:textSize="10dp"
-            app:iconPadding="1dp"
-            app:icon="@drawable/ic_baseline_shopping_bag_24"
-            app:iconTint="@color/colorPrimary"
-            app:strokeColor="@color/colorPrimary" />
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/invoice"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:fontFamily="@font/sans_bold"
+            app:cornerRadius="8dp"
             android:gravity="center"
             android:text="INVOICE"
-            app:iconPadding="1dp"
             android:textColor="@color/colorPrimary"
-            android:textSize="10dp"
-            android:visibility="visible"
+            android:textSize="15dp"
             app:icon="@drawable/ic_baseline_download_24"
-            app:iconTint="@color/colorPrimary"
-            app:strokeColor="@color/colorPrimary" />
+            app:iconTint="@color/colorPrimary" />
 
     </LinearLayout>
 

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -99,7 +101,8 @@ public class CartActivity extends AppCompatActivity implements CartItemClick {
         nestedScrollView = findViewById(R.id.nested);
         continueCard = findViewById(R.id.continueCard);
         empty_product = findViewById(R.id.empty_product);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
+        Drawable backArrow = getResources().getDrawable(R.drawable.ic_round_arrow_back_24);
+        backArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getAllCart();
@@ -200,8 +203,6 @@ public class CartActivity extends AppCompatActivity implements CartItemClick {
 
             }
             float startValue = Float.parseFloat(productList.get(i).price) * Integer.parseInt(qty);
-
-
             grandTotal = grandTotal + startValue;
         }
         ((TextView) findViewById(R.id.subtotal)).setText("₹" + decimalFormat.format(grandTotal) + ".00");

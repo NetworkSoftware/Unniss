@@ -5,11 +5,12 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,30 +39,37 @@ import pro.network.unniss.app.AppConfig;
 import pro.network.unniss.app.AppController;
 import pro.network.unniss.app.BaseActivity;
 import pro.network.unniss.app.DbCart;
+import pro.network.unniss.app.DbWishList;
 import pro.network.unniss.cart.CartActivity;
 import pro.network.unniss.chip.ChipAdapter;
 import pro.network.unniss.chip.ChipBean;
 import pro.network.unniss.chip.OnChip;
+import pro.network.unniss.product.AllProductAdapter;
 import pro.network.unniss.product.ProductActivity;
 import pro.network.unniss.product.ProductItemClick;
 import pro.network.unniss.product.ProductListBean;
-import pro.network.unniss.product.SingleProductAdapter;
+import pro.network.unniss.product.Size;
+import pro.network.unniss.wishlist.WishListActivity;
 
 public class AllProductActivity extends BaseActivity implements ProductItemClick, OnChip {
     private final String TAG = getClass().getSimpleName();
     private final ArrayList<ChipBean> chipBeans = new ArrayList<>();
     ProgressDialog pDialog;
     RecyclerView recycler_product;
-    SingleProductAdapter productListAdapter;
+    AllProductAdapter allProductAdapter;
     SharedPreferences sharedpreferences;
+
     CartActivity.OnCartItemChange onCartItemChange;
-    RecyclerView recycler_chips;
     ChipAdapter chipAdapter;
+    TextView wishListCount;
+    ProgressBar allproductProgress;
     private DbCart db;
+    private DbWishList dbWishList;
     private List<ProductListBean> productList = new ArrayList<>();
     private SearchView searchView;
-    private TextView cart_badge, title;
+    private TextView cart_badge;
     private String selectedType = "COMBO PACK";
+    private String selectedTypeId = "COMBO PACK";
 
     @Override
     protected void startDemo() {
@@ -68,34 +79,42 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
         sharedpreferences = getApplicationContext().getSharedPreferences(AppConfig.mypreference, Context.MODE_PRIVATE);
 
         db = new DbCart(getApplicationContext());
+        dbWishList = new DbWishList(this);
         recycler_product = findViewById(R.id.recycler_product);
+        allproductProgress = findViewById(R.id.allproductProgress);
         productList = new ArrayList<>();
-        productListAdapter = new SingleProductAdapter(getApplicationContext(), productList, this, sharedpreferences);
+        allProductAdapter = new AllProductAdapter(getApplicationContext(), productList, this, sharedpreferences);
         final GridLayoutManager addManager1 = new GridLayoutManager(getApplication(), 2);
         recycler_product.setLayoutManager(addManager1);
-        recycler_product.setAdapter(productListAdapter);
+        recycler_product.setAdapter(allProductAdapter);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String type = getIntent().getStringExtra("type");
-        getSupportActionBar().setTitle(type != null ? type : getString(R.string.app_name));
-        selectedType = type;
-    }
 
+        String type = getIntent().getStringExtra("type");
+        getSupportActionBar().setTitle(type != null ? type : Html.fromHtml("<font color='#000000'>UNNISS</font>"));
+        selectedType = type;
+        String id = getIntent().getStringExtra("id");
+        getSupportActionBar().setTitle(type != null ? type : Html.fromHtml("<font color='#000000'>UNNISS</font>"));
+        selectedTypeId = id != null ? id : "";
+
+    }
 
     private void fetchProductList(final String searchKey) {
         String tag_string_req = "req_register";
         // showDialog();
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.PRODUCT_GET_ALL, new Response.Listener<String>() {
+        allproductProgress.setVisibility(View.VISIBLE);
+        StringRequest strReq = new StringRequest(Request.Method.GET,
+                AppConfig.PRODUCT_GET_ALL + "?searchKey=" + searchKey + "&category=" + selectedTypeId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("Register Response: ", response);
+                allproductProgress.setVisibility(View.GONE);
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int success = jObj.getInt("success");
                     if (success == 1) {
-                    productList = new ArrayList<>();
+                        productList = new ArrayList<>();
                         JSONArray jsonArray = jObj.getJSONArray("data");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -103,19 +122,35 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
                             productListBean.setId(jsonObject.getString("id"));
                             productListBean.setBrand(jsonObject.getString("subcategory"));
                             productListBean.setCategory(jsonObject.getString("category"));
-                            productListBean.setPrice(jsonObject.getString("price"));
                             productListBean.setModel(jsonObject.getString("name"));
+                            if(!jsonObject.isNull("price")){
+                                productListBean.setPrice(jsonObject.getString("price"));
+                            }
                             productListBean.setImage(jsonObject.getString("image"));
                             productListBean.setDescription(jsonObject.getString("description"));
                             productListBean.setRqtyType(jsonObject.getString("rqtyType"));
                             productListBean.setRqty(jsonObject.getString("rqty"));
+                            productListBean.setFabric(jsonObject.getString("fabric"));
+                            productListBean.setBestselling(jsonObject.getString("bestselling"));
+                            productListBean.setPricedrop(jsonObject.getString("pricedrop"));
+                            productListBean.setIdeal(jsonObject.getString("ideal"));
+                            productListBean.setOccasion(jsonObject.getString("occasion"));
+                            productListBean.setFit(jsonObject.getString("fit"));
+                            productListBean.setColor(jsonObject.getString("color"));
+                        //    productListBean.setSize(jsonObject.getString("size"));
+                            productListBean.setClosure(jsonObject.getString("closure"));
+                            productListBean.setPocket(jsonObject.getString("pocket"));
+                            productListBean.setPattern(jsonObject.getString("pattern"));
+                            productListBean.setRise(jsonObject.getString("rise"));
+                            productListBean.setOrigin(jsonObject.getString("origin"));
                             productListBean.setStock_update(jsonObject.getString("stock_status"));
+                            productListBean.setVariation(jsonObject.getString("variation"));
                             productList.add(productListBean);
                         }
                     } else {
                         Toast.makeText(getApplication(), jObj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
-                    productListAdapter.notifyData(productList);
+                    allProductAdapter.notifyData(productList);
                     getSupportActionBar().setSubtitle(productList.size() + " Products");
                 } catch (JSONException e) {
                     Log.e("xxxxxxxxxxx", e.toString());
@@ -130,6 +165,7 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplication(),
                         "Some Network Error.Try after some time", Toast.LENGTH_LONG).show();
+                allproductProgress.setVisibility(View.GONE);
             }
         }) {
             protected Map<String, String> getParams() {
@@ -150,13 +186,23 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
 
     private void addToCart(ProductListBean productListBean) {
         productListBean.setQty("1");
+        ObjectMapper mapper = new ObjectMapper();
+        Object listBeans = new Gson().fromJson(productListBean.getSize(),
+                Object.class);
+        ArrayList<Size> sizes = mapper.convertValue(
+                listBeans,
+                new TypeReference<ArrayList<Size>>() {
+                }
+        );
+        productListBean.setSize(sizes.get(0).getSize());
+        productListBean.setPrice(sizes.get(0).getSize_price());
         db.insertProductInCart(productListBean, sharedpreferences.getString(AppConfig.user_id, ""));
         Toast.makeText(getApplication(), "Item added successfully", Toast.LENGTH_SHORT).show();
         if (onCartItemChange != null) {
             onCartItemChange.onCartChange();
         }
         setupBadge();
-        productListAdapter.notifyDataSetChanged();
+        allProductAdapter.notifyDataSetChanged();
     }
 
 
@@ -186,12 +232,33 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
             }
         }
         setupBadge();
-        productListAdapter.notifyData(productList);
+        allProductAdapter.notifyData(productList);
     }
 
     @Override
     public void onCartClick(ProductListBean productListBean) {
         addToCart(productListBean);
+    }
+
+    private void updateWishList() {
+        int wishCountYalu = dbWishList.getWishListCount(sharedpreferences.getString(AppConfig.user_id, ""));
+        if (wishListCount != null) {
+            if (wishCountYalu == 0) {
+                if (wishListCount.getVisibility() != View.GONE) {
+                    wishListCount.setVisibility(View.GONE);
+                }
+            } else {
+                wishListCount.setText(String.valueOf(Math.min(wishCountYalu, 99)));
+                if (wishListCount.getVisibility() != View.VISIBLE) {
+                    wishListCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onWishClick(ProductListBean productListBean) {
+        updateWishList();
     }
 
     @Override
@@ -228,13 +295,22 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
 
         View actionView = menuItem.getActionView();
         cart_badge = actionView.findViewById(R.id.cart_badge);
-
         setupBadge();
-
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onOptionsItemSelected(menuItem);
+            }
+        });
+
+        final MenuItem fabmenu = menu.findItem(R.id.wishlist);
+        View favView = fabmenu.getActionView();
+        wishListCount = favView.findViewById(R.id.wishListCount);
+        updateWishList();
+        favView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelected(fabmenu);
             }
         });
 
@@ -251,6 +327,10 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
             case R.id.cart:
                 Intent intent = new Intent(AllProductActivity.this, CartActivity.class);
                 startActivity(intent);
+                return true;
+            case R.id.wishlist:
+                Intent intent1 = new Intent(AllProductActivity.this, WishListActivity.class);
+                startActivity(intent1);
                 return true;
             case android.R.id.home:
                 finish();
@@ -280,6 +360,7 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
         super.onStart();
         fetchProductList("");
         setupBadge();
+        updateWishList();
     }
 
     @Override
@@ -287,7 +368,6 @@ public class AllProductActivity extends BaseActivity implements ProductItemClick
         selectedType = type;
         getSupportActionBar().setTitle(selectedType);
         chipAdapter.notifyData(selectedType);
-        fetchProductList("");
     }
 
 }

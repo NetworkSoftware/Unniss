@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,6 +46,7 @@ import pro.network.unniss.app.BaseActivity;
 import pro.network.unniss.product.ProductListBean;
 
 import static pro.network.unniss.app.AppConfig.ORDER_CHANGE_STATUS;
+import static pro.network.unniss.app.AppConfig.address;
 
 public class MyOrderPage extends BaseActivity implements ReturnOnClick {
     RecyclerView myorders_list;
@@ -67,7 +70,10 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
         scroll = findViewById(R.id.scroll);
         empty_product = findViewById(R.id.empty_product);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
+        Drawable backArrow = getResources().getDrawable(R.drawable.ic_round_arrow_back_24);
+        backArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(backArrow);
+     //   getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("My Orders");
 
@@ -79,7 +85,7 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
         pDialog.setMessage("Fetching...");
         showDialog();
         StringRequest strReq = new StringRequest(Request.Method.GET,
-                AppConfig.ORDER_GET_ALL, new Response.Listener<String>() {
+                AppConfig.ORDER_GET_ALL,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("Register Response: ", response);
@@ -99,6 +105,10 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
                             order.setQuantity(jsonObject.getString("quantity"));
                             order.setStatus(jsonObject.getString("status"));
                             order.setitems(jsonObject.getString("items"));
+                            order.setRqty_type(jsonObject.has("rqtyType") ?
+                                    jsonObject.getString("rqtyType") : "NA");
+                            order.setProduct_price(jsonObject.has("product_price") ?
+                                    jsonObject.getString("product_price") : "NA");
                             order.setToPincode(jsonObject.has("toPincode") ?
                                     jsonObject.getString("toPincode") : "NA");
                             order.setDelivery(jsonObject.has("delivery") ?
@@ -109,6 +119,7 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
                                     jsonObject.getString("grandCost") : "NA");
                             order.setShipCost(jsonObject.has("shipCost") ?
                                     jsonObject.getString("shipCost") : "NA");
+                            order.setPayment_method_title(jsonObject.getString("payment_method_title"));
                             order.setAddress(jsonObject.getString("address"));
                             order.setPaymentId(jsonObject.has("paymentId") ?
                                     jsonObject.getString("paymentId") : "NA");
@@ -120,10 +131,20 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
                                     jsonObject.getString("name") : "NA");
                             order.setPhone(jsonObject.has("phone") ?
                                     jsonObject.getString("phone") : "NA");
+                            order.setSize(jsonObject.has("size") ?
+                                    jsonObject.getString("size") : "NA");
                             order.setAddressOrg(jsonObject.has("addressOrg") ?
                                     jsonObject.getString("addressOrg") : "NA");
+                            order.setCoupon(jsonObject.has("coupon") ?
+                                    jsonObject.getString("coupon") : "NA");
+                            order.setCouponCost(jsonObject.has("couponCost") ?
+                                    jsonObject.getString("couponCost") : "NA");
+                            order.setTrackId(jsonObject.has("trackId") ?
+                                    jsonObject.getString("trackId") : "NA");
                             order.setCreatedon(jsonObject.getString("createdon"));
-                            order.setWalletAmount("- ₹" + jsonObject.getString("wallet"));
+
+                          //  order.setWalletAmount("- ₹" + jsonObject.getString("wallet"));
+
                             ObjectMapper mapper = new ObjectMapper();
                             Object listBeans = new Gson().fromJson(jsonObject.getString("items"),
                                     Object.class);
@@ -136,16 +157,7 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
                             myorderBeans.add(order);
 
                         }
-                        myOrderListAdapter.notifyData(myorderBeans);
-                        getSupportActionBar().setSubtitle("Orders - " + myorderBeans.size());
 
-                        if (myorderBeans.size() == 0) {
-                            empty_product.setVisibility(View.VISIBLE);
-                            scroll.setVisibility(View.GONE);
-                        } else {
-                            empty_product.setVisibility(View.GONE);
-                            scroll.setVisibility(View.VISIBLE);
-                        }
                     } else {
                         Toast.makeText(getApplicationContext(), jObj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -155,6 +167,16 @@ public class MyOrderPage extends BaseActivity implements ReturnOnClick {
 
                 }
 
+                myOrderListAdapter.notifyData(myorderBeans);
+                getSupportActionBar().setSubtitle("Orders - " + myorderBeans.size());
+
+                if (myorderBeans.size() == 0) {
+                    empty_product.setVisibility(View.VISIBLE);
+                    scroll.setVisibility(View.GONE);
+                } else {
+                    empty_product.setVisibility(View.GONE);
+                    scroll.setVisibility(View.VISIBLE);
+                }
             }
         }, new Response.ErrorListener() {
 

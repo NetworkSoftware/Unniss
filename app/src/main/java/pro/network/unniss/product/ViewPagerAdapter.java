@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import pro.network.unniss.R;
+import pro.network.unniss.app.AppConfig;
 
 
 class ViewPagerAdapter extends PagerAdapter {
@@ -66,7 +67,7 @@ class ViewPagerAdapter extends PagerAdapter {
         // setting the image in the imageView
       //  imageView.setImageResource(images[position]);
 
-        String resizedPath = Utils.getResizedImage(images.get(position), true);
+        String resizedPath = AppConfig.getResizedImage(images.get(position), true);
         Log.e("xxxxx", resizedPath);
         Glide.with(context).load(resizedPath).into(imageView);
 

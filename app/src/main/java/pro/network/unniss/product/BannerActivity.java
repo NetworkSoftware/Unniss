@@ -61,13 +61,13 @@ public class BannerActivity extends BaseActivity {
 
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=919841778659"
+                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=917904274703"
                             + "&text=" + "Hi"));
                     intent.setPackage("com.whatsapp.w4b");
                     startActivity(intent);
                 } catch (ActivityNotFoundException e) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=919841778659"
+                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=917904274703"
                             + "&text=" + "Hi"));
                     intent.setPackage("com.whatsapp");
                     startActivity(intent);

@@ -50,12 +50,12 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
         Phrase phrase0 = new Phrase();
         phrase0.add("");
         Chunk chunk0 = new Chunk("W: wa.me/918124881156", webPrint);
-        chunk0.setAnchor("https://wa.me/919841778659");
+        chunk0.setAnchor("https://wa.me/917904274703");
         phrase0.add(chunk0);
 
         Phrase phrase1 = new Phrase();
         phrase1.add("");
-        Chunk chunk1 = new Chunk("unniss@gmail.com", webPrint);
+        Chunk chunk1 = new Chunk("support@unniss.in", webPrint);
         chunk1.setAnchor("https://mail.google.com/mail/u/0/?tab\\u003drm\\u0026ogbl#inbox?compose\\u003dnew");
         phrase1.add(chunk1);
 

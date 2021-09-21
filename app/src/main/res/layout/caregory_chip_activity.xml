@@ -30,7 +30,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="top"
                 android:scaleType="centerCrop"
-                android:src="@drawable/vivo" />
+                android:src="@drawable/unniss" />
 
 
             <TextView

@@ -17,7 +17,7 @@ ext {
 
     developerId = 'ashik94vc'
     developerName = 'Ashik Vetrivelu'
-    developerEmail = 'vcashik@gmail.com'
+    developerEmail = 'support@unniss.in'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'

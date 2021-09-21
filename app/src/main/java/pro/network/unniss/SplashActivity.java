@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 
 import pro.network.unniss.app.AppConfig;
+import pro.network.unniss.app.PreferenceBean;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -29,6 +31,10 @@ public class SplashActivity extends AppCompatActivity {
         Log.d("TOken ", "" + FirebaseInstanceId.getInstance().getToken());
         FirebaseMessaging.getInstance().subscribeToTopic("allDevices");
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        PreferenceBean.getInstance().setWidth(displayMetrics.widthPixels);
+        PreferenceBean.getInstance().setHeight(displayMetrics.heightPixels);
 
         Thread logoTimer = new Thread() {
             public void run() {

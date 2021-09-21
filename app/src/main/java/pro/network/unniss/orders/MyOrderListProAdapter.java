@@ -4,13 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import pro.network.unniss.R;
+import pro.network.unniss.app.AppConfig;
 import pro.network.unniss.product.ProductListBean;
 
 import static pro.network.unniss.app.AppConfig.decimalFormat;
@@ -39,8 +43,7 @@ public class MyOrderListProAdapter extends RecyclerView.Adapter<MyOrderListProAd
 
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.single_payment_item, parent, false);
-
+                .inflate(R.layout.single_order_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
@@ -48,7 +51,15 @@ public class MyOrderListProAdapter extends RecyclerView.Adapter<MyOrderListProAd
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final ProductListBean myorderBean = myorderBeans.get(position);
 
-        holder.title.setText(myorderBean.getBrand() + " " + myorderBean.model);
+        holder.title.setText(myorderBean.getName());
+        if(myorderBean.getImage()!=null&& myorderBean.getImage().length()>0){
+
+        Picasso.with(mainActivityUser)
+                .load(AppConfig.getResizedImage(myorderBean.getImage(), true))
+                .placeholder(R.drawable.unniss)
+                .error(R.drawable.unniss)
+                .into(holder.product_image);
+        }
         String qty = myorderBean.qty;
         try {
             if (qty == null || !qty.matches("-?\\d+(\\.\\d+)?")) {
@@ -57,11 +68,10 @@ public class MyOrderListProAdapter extends RecyclerView.Adapter<MyOrderListProAd
         } catch (Exception e) {
 
         }
-        float startValue = Float.parseFloat(myorderBean.getPrice()) * Integer.parseInt(qty);
+        float startValue = Float.parseFloat(myorderBean.getPrice()) * Float.parseFloat(qty);
         holder.subtitle.setText(myorderBean.getQty() + "*" + myorderBean.getPrice() + "/" +
                 myorderBean.getRqty() + " " + myorderBean.getRqtyType() +
-                "=" + "₹" + decimalFormat.format(startValue) + ".00");
-
+                "=" + "₹" + decimalFormat.format(startValue) + ".00\n"+"Size :"+ myorderBean.getSize());
     }
 
     public int getItemCount() {
@@ -71,12 +81,14 @@ public class MyOrderListProAdapter extends RecyclerView.Adapter<MyOrderListProAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView title;
         private final TextView subtitle;
+        private  final ImageView product_image;
 
 
         public MyViewHolder(View view) {
             super((view));
             title = view.findViewById(R.id.title);
             subtitle = view.findViewById(R.id.subtitle);
+            product_image = view.findViewById(R.id.product_image);
 
         }
     }

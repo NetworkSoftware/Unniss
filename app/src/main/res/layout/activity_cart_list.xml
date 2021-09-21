@@ -83,6 +83,18 @@
                     android:gravity="center_vertical"
                     android:text="Rs.5000" />
 
+                <TextView
+                    android:id="@+id/size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/sans"
+                    android:textColor="@color/gray"
+                    android:gravity="center_vertical"
+                    android:text="Rs.5000" />
+
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="45dp"

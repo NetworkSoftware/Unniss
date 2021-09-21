@@ -48,7 +48,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MyViewHold
     @Override
     public RandomAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_aa, parent, false);
+                .inflate(R.layout.category_item, parent, false);
         return new RandomAdapter.MyViewHolder(itemView);
     }
 
@@ -59,7 +59,7 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MyViewHold
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBlock.onItemClick(bean.text);
+                onBlock.onItemClick(bean.text,bean.id);
             }
         });
         Glide.with(context)
@@ -96,4 +96,3 @@ public class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.MyViewHold
         }
     }
 }
-

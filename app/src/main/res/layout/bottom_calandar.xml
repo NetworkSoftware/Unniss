@@ -26,7 +26,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:padding="10dp"
-                android:src="@drawable/met_ic_close"
+                android:src="@drawable/ic_baseline_close_24"
                 app:tint="@color/black" />
 
             <TextView

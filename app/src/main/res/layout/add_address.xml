@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/sans"
             android:layout_marginBottom="20dp"
             android:text="Scrutinysoft\n1/85 Express Towers 2nd floor,\nOMR, Kelambakkam \nChennai-603103\nTamilnadu"
             android:textColor="#575555" />

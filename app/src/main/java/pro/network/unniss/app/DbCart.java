@@ -105,7 +105,8 @@ public class DbCart extends SQLiteOpenHelper {
                 values.put(ProductListBean.COLUMN_DESCRIPTION, mainbean.getDescription());
                 values.put(ProductListBean.COLUMN_QTY, mainbean.getQty());
                 values.put(ProductListBean.COLUMN_STOCKUPDATE, mainbean.getStock_update());
-
+                values.put(ProductListBean.COLUMN_SIZE, mainbean.getSize());
+                values.put(ProductListBean.COLUMN_VARIATIONID, mainbean.getVariationId());
 
                 // insert row
                 long id = db.insert(ProductListBean.TABLE_NAME, null, values);
@@ -155,6 +156,9 @@ public class DbCart extends SQLiteOpenHelper {
                 productListBean.setQty(cursor.getString(cursor.getColumnIndex(ProductListBean.COLUMN_QTY)));
                 productListBean.setStock_update(cursor.getString(cursor.getColumnIndex(ProductListBean.COLUMN_STOCKUPDATE)));
                 productListBean.setRqtyType(cursor.getString(cursor.getColumnIndex(ProductListBean.COLUMN_RQTY_TYPE)));
+                productListBean.setSize(cursor.getString(cursor.getColumnIndex(ProductListBean.COLUMN_SIZE)));
+                productListBean.setVariationId(cursor.getString(cursor.getColumnIndex(ProductListBean.COLUMN_VARIATIONID)));
+
                 productListBeans.add(productListBean);
             } while (cursor.moveToNext());
         }
@@ -200,6 +204,8 @@ public class DbCart extends SQLiteOpenHelper {
         values.put(ProductListBean.COLUMN_DESCRIPTION, mainbean.getDescription());
         values.put(ProductListBean.COLUMN_QTY, mainbean.getQty());
         values.put(ProductListBean.COLUMN_RQTY_TYPE, mainbean.getRqtyType());
+        values.put(ProductListBean.COLUMN_SIZE, mainbean.getSize());
+        values.put(ProductListBean.COLUMN_VARIATIONID, mainbean.getVariationId());
 
 
         // updating row
